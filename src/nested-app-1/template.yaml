@@ -17,8 +17,8 @@ Resources:
   HelloWorld2FunctionDaslab:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
-      CodeUri: ./
-      Handler: app.lambdaHandler
+      CodeUri: ../
+      Handler: nested-app-1/hello-world-2/app.lambdaHandler
       Runtime: nodejs16.x
       Architectures:
         - x86_64
@@ -33,14 +33,16 @@ Resources:
       BuildProperties:
         Minify: true
         Target: 'es2020'
+        Loader:
+          - tsconfig.ts
         # Sourcemap: true # Enabling source maps will create the required NODE_OPTIONS environment variables on your lambda function during sam build
-        EntryPoints:
-          - hello-world-2/app.ts
+        # EntryPoints:
+        #   - nested-app-1/hello-world-2/app.ts
   HelloWorldFunctionDaslab:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
-      CodeUri: ./
-      Handler: app.lambdaHandler
+      CodeUri: ../
+      Handler: nested-app-1/hello-world-1/app.lambdaHandler
       Runtime: nodejs16.x
       Architectures:
         - x86_64
@@ -57,9 +59,10 @@ Resources:
         Target: 'es2020'
         Loader:
           - tsconfig.ts
+
         # Sourcemap: true # Enabling source maps will create the required NODE_OPTIONS environment variables on your lambda function during sam build
-        EntryPoints:
-          - hello-world-1/app.ts
+        # EntryPoints:
+        #   - nested-app-1/hello-world-1/app.ts
 
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
