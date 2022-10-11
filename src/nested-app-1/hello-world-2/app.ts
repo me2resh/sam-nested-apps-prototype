@@ -1,4 +1,4 @@
-import { DateCapture } from '../shared-packages/date_capture';
+import { DateCapture } from '@/shared-packages/date_capture';
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
 
 /**
